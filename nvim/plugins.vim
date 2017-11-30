@@ -20,6 +20,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'w0rp/ale'
 Plug 'Yggdroot/indentLine'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 " Syntax
 Plug 'cakebaker/scss-syntax.vim'
