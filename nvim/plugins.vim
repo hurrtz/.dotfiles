@@ -34,11 +34,10 @@ Plug 'tmux-plugins/vim-tmux'
 
 " Navigation
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'craigemery/vim-autotag'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-sneak'
-Plug 'szw/vim-tags'
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'tmhedberg/matchit'
 
 " Source Control
@@ -47,6 +46,6 @@ Plug 'gregsexton/gitv'
 Plug 'tpope/vim-fugitive'
 
 " Miscellaneous
-Plug 'ludovicchabant/vim-gutentags'
+Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-dispatch'
 Plug 'ryanoasis/vim-devicons'
