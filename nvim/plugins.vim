@@ -3,6 +3,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'zhaocai/GoldenView.Vim'
+Plug 'itchyny/lightline.vim'
 
 " Editing and Formatting
 Plug 'ap/vim-css-color'
