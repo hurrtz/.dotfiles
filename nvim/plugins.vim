@@ -47,6 +47,6 @@ Plug 'gregsexton/gitv'
 Plug 'tpope/vim-fugitive'
 
 " Miscellaneous
-Plug 'majutsushi/tagbar'
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'tpope/vim-dispatch'
 Plug 'ryanoasis/vim-devicons'
