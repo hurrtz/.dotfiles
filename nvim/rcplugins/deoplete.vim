@@ -13,3 +13,10 @@ endif
 function! <SID>my_cr_function()
   return pumvisible() ? "\<c-y>" : "\<cr>"
 endfunction
+
+let g:deoplete#sources#ternjs#filetypes = [
+                \ 'jsx',
+                \ 'javascript.jsx',
+                \ 'tsx',
+                \ 'javascript.tsx',
+                \ ]
