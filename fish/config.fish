@@ -7,5 +7,6 @@ alias gi=git
 # autoload nvm and current node version
 set -x NVM_DIR ~/.nvm
 source ~/.config/fish/nvm-wrapper/nvm.fish
+
 # nvm use node
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
