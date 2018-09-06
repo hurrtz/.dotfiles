@@ -1,0 +1,8 @@
+[alias]
+	s = status
+[user]
+	email = info@tobiaswinkler.berlin
+	name = Tobias Winkler
+	signinkey = 80E7BC6077E5B10C
+[core]
+	editor = nvim

@@ -10,6 +10,7 @@ Plug 'ap/vim-css-color'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mbbill/undotree'
 Plug 'sbdchd/neoformat'
+Plug 'mattn/emmet-vim'
 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -44,7 +45,7 @@ Plug 'tmux-plugins/vim-tmux'
 
 " Navigation
 Plug 'christoomey/vim-tmux-navigator'
-Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'ludovicchabant/vim-gutentags'
@@ -56,6 +57,8 @@ Plug 'gregsexton/gitv'
 Plug 'tpope/vim-fugitive'
 
 " Miscellaneous
+Plug 'craigemery/vim-autotag'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-dispatch'
 Plug 'ryanoasis/vim-devicons'
+Plug 'skywind3000/asyncrun.vim'

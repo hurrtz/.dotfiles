@@ -1,0 +1,1 @@
+/home/hurrtz/.config/fisherman/getopts/getopts.fish

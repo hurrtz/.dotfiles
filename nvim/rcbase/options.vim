@@ -43,7 +43,7 @@ set runtimepath+=~/.fzf
 set ruler
 set scrolloff=2
 set secure
-set shell=/usr/local/bin/fish
+set shell=/usr/bin/fish
 set shiftround
 set shiftwidth=2
 set showcmd
