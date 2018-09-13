@@ -1,0 +1,53 @@
+icons = "awesome"
+
+[theme]
+name = "solarized-dark"
+[theme.overrides]
+idle_bg = "#2f343f"
+idle_fg = "#676e7d"
+
+[[block]]
+block = "net"
+device = "wlp0s20f3"
+ssid = true
+ip = true
+interval = 5
+
+[[block]]
+block = "disk_space"
+path = "/"
+alias = "/"
+info_type = "available"
+unit = "GB"
+interval = 20
+warning = 20.0
+alert = 10.0
+
+[[block]]
+block = "memory"
+display_type = "memory"
+format_mem = "{Mup}%"
+format_swap = "{SUp}%"
+
+[[block]]
+block = "cpu"
+interval = 1
+
+[[block]]
+block = "temperature"
+collapsed = false
+interval = 10
+format = "{min}° min, {max}° max, {average}° avg"
+
+[[block]]
+block = "battery"
+interval = 10
+format = "{percentage}% {time}"
+
+[[block]]
+block = "sound"
+
+[[block]]
+block = "time"
+interval = 60
+format = "%a, %d.%m.%y %R"

@@ -1,0 +1,1 @@
+/home/hurrtz/.config/fisherman/nvm/functions/npx.fish

@@ -1,0 +1,1 @@
+/home/hurrtz/.config/fisherman/bass/functions/__bass.py

@@ -1,15 +1,8 @@
 # needed because default would be some ugly cyan background with white color
 set -g fish_pager_color_progress 'cyan'
 
-# alias for git
-alias gi=git
-
-# autoload nvm and current node version
-set -x NVM_DIR ~/.nvm
-source ~/.config/fish/nvm-wrapper/nvm.fish
-
-# nvm use node
-set -g fish_user_paths "/usr/local/bin" $fish_user_paths
+set PATH $PATH /home/hurrtz/.linuxbrew/bin
+set PATH $PATH /home/hurrtz/bin
 
 function sudo
     if test "$argv" = !!
@@ -32,17 +25,17 @@ function db
     cd "$HOME/Dropbox"
 end
 
-function docs    
+function docs
 	switch (uname -s)
 	    case Darwin Linux FreeBSD NetBSD DragonFly
 			set documents $HOME/Documents
 		case '*'
-			set cygwin (eval uname -o)  
+			set cygwin (eval uname -o)
 	    		if test $cygwin = "Cygwin"
 	    			set documents (eval cygpath -O)
-	    		end    
+	    		end
 	    		return
-	    	end    
+	    	end
 	    	cd $documents
     end
 

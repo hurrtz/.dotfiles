@@ -1,0 +1,1 @@
+/home/hurrtz/.local/share/omf/themes/agnoster/fish_prompt.fish
