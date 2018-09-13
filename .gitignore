@@ -1,4 +1,1 @@
-configstore
-yarn
-fish/fishd\.*
-nvim/undodir
+tags*

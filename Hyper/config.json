@@ -1,0 +1,14 @@
+{
+	"windowPosition": [
+		0,
+		624
+	],
+	"windowSize": [
+		1920,
+		1080
+	],
+	"hyper": {
+		"plugins": "{\"plugins\":[\"hypercwd\",\"hyper-search\"],\"localPlugins\":[]}",
+		"plugin-versions": "[[\"hypercwd\",\"1.2.3\"],[\"hyper-search\",\"0.0.10\"]]"
+	}
+}

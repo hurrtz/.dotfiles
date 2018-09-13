@@ -1,2 +1,13 @@
+package await
+package bang-bang
+package config
+package fzf
+package grc
+package rvm
+package spark
+package sublime
+package tab
+package weather
+package z
 theme budspencer
 theme default
