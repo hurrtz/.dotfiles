@@ -24,8 +24,8 @@ font pango:Noto Mono For Powerline 8
 
 floating_modifier $mod
 
-smart_gaps on
-gaps inner 8
+# smart_gaps on
+gaps inner 5
 gaps outer 0
 
 bindsym $mod+$left focus left
@@ -109,22 +109,24 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
-bindsym $mod+Shift+e mode "$mode_system"
+#bindsym $mod+Shift+e mode "$mode_system"
 
 # Lock, Logout, Suspend, Hibernat, Reboot, Poweroff
-set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (p) poweroff
-mode "$mode_system" {
-	bindsym l exec --no-startup-id i3lock-fancy, mode "default"
-	bindsym e exec --no-startup-id i3-msg exit, mode "default"
-	bindsym s exec --no-startup-id "xlock -b -m; system-suspend",   mode "default"
-	bindsym h exec --no-startup-id "xlock -b -m; system-hibernate", mode "default"
-	bindsym r exec --no-startup-id system-reboot,    mode "default"
-	bindsym p exec --no-startup-id system-shutdown,  mode "default"
+#set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (p) poweroff
+#mode "$mode_system" {
+#	bindsym l exec --no-startup-id i3lock-fancy, mode "default"
+#	bindsym e exec --no-startup-id i3-msg exit, mode "default"
+#	bindsym s exec --no-startup-id "xlock -b -m; system-suspend",   mode "default"
+#	bindsym h exec --no-startup-id "xlock -b -m; system-hibernate", mode "default"
+#	bindsym r exec --no-startup-id "reboot", mode "default"
+#	bindsym p exec --no-startup-id "poweroff", mode "default"
 
 	# back to normal: Enter or Escape
-	bindsym Return mode "default"
-	bindsym Escape mode "default"
-}
+#	bindsym Return mode "default"
+#	bindsym Escape mode "default"
+#}
+
+bindsym $mod+Shift+e exec /home/hurrtz/.config/i3/exit-menu.sh
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -185,21 +187,22 @@ assign [class="Opera"] $workspace9
 assign [class="Finder"] $workspace6
 
 #key bindings
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 2 +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 2 -5%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 2 toggle
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioPause exec playerctl play-pause
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20
 bindsym $mod+Shift+b exec opera # browser
 bindsym $mod+Return exec kitty
 bindsym $mod+Shift+Return exec --no-startup-id kitty -name "floating_kitty"
 bindsym $mod+Shift+q kill
 bindsym Print exec screenshot
-bindsym $mod+d exec rofi -show run -theme glue-pro-blue
-bindsym $mod+space exec rofi -show combi -combi-modi window,drun,run -modi combi,'calc:qalc +u8 -nocurrencies' -sidebar-mode -theme glue-pro-blue
 bindsym $mod+Shift+p exec i3lock-fancy
+bindsym $mod+space exec "rofi -combi-modi drun,run -show combi -modi combi,'calculator:qalc +u8 -nocurrencies' -sidebar-mode -lines 5"
 
 # startup
 exec_always --no-startup-id feh --bg-scale /home/hurrtz/Pictures/wallpaper.jpg
@@ -211,5 +214,5 @@ exec --no-startup-id opera
 exec --no-startup-id chromium
 exec --no-startup-id evolution
 exec_always --no-startup-id setxkbmap -option ctrl:nocaps
-exec --no-startup-id compton -f --config /home/hurrtz/.config/compton/compton.conf
+exec --no-startup-id compton -bc -r 3 -l -4 -t -4 --shadow-exclude '_GTK_FRAME_EXTENTS@:c' -f --config /home/hurrtz/.config/compton/compton.conf
 
