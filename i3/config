@@ -18,6 +18,8 @@ client.unfocused          $inactive-bg-color    $inactive-bg-color    $inactive-
 client.focused_inactive   $inactive-bg-color    $inactive-bg-color    $inactive-text-color    #00ff00
 client.urgent             $urgent-bg-color      $urgent-bg-color      $text-color             #00ff00
 
+new_window 1pixel
+
 hide_edge_borders both
 
 font pango:Noto Mono For Powerline 8
@@ -25,7 +27,7 @@ font pango:Noto Mono For Powerline 8
 floating_modifier $mod
 
 # smart_gaps on
-gaps inner 5
+gaps inner 10
 gaps outer 0
 
 bindsym $mod+$left focus left
@@ -68,16 +70,16 @@ bindsym $mod+Shift+space floating toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
-set $workspace1 "1 "
-set $workspace2 "2 "
-set $workspace3 "3 "
-set $workspace4 "4 "
-set $workspace5 "5 "
-set $workspace6 "6 "
-set $workspace7 "7 "
-set $workspace8 "8 "
-set $workspace9 "9 "
-set $workspace10 "10 "
+set $workspace1 ""
+set $workspace2 ""
+set $workspace3 ""
+set $workspace4 ""
+set $workspace5 ""
+set $workspace6 ""
+set $workspace7 ""
+set $workspace8 ""
+set $workspace9 ""
+set $workspace10 ""
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -109,68 +111,28 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
-#bindsym $mod+Shift+e mode "$mode_system"
-
-# Lock, Logout, Suspend, Hibernat, Reboot, Poweroff
-#set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (p) poweroff
-#mode "$mode_system" {
-#	bindsym l exec --no-startup-id i3lock-fancy, mode "default"
-#	bindsym e exec --no-startup-id i3-msg exit, mode "default"
-#	bindsym s exec --no-startup-id "xlock -b -m; system-suspend",   mode "default"
-#	bindsym h exec --no-startup-id "xlock -b -m; system-hibernate", mode "default"
-#	bindsym r exec --no-startup-id "reboot", mode "default"
-#	bindsym p exec --no-startup-id "poweroff", mode "default"
-
-	# back to normal: Enter or Escape
-#	bindsym Return mode "default"
-#	bindsym Escape mode "default"
-#}
-
 bindsym $mod+Shift+e exec /home/hurrtz/.config/i3/exit-menu.sh
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+  bindsym $down resize shrink width 10 px or 10 ppt
+  bindsym $up resize grow height 10 px or 10 ppt
+  bindsym $right resize shrink height 10 px or 10 ppt
+  bindsym $left resize grow width 10 px or 10 ppt
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym $down resize shrink width 10 px or 10 ppt
-        bindsym $up resize grow height 10 px or 10 ppt
-        bindsym $right resize shrink height 10 px or 10 ppt
-        bindsym $left resize grow width 10 px or 10 ppt
+  # same bindings, but for the arrow keys
+  bindsym Left resize shrink width 10 px or 10 ppt
+  bindsym Down resize grow height 10 px or 10 ppt
+  bindsym Up resize shrink height 10 px or 10 ppt
+  bindsym Right resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+  # back to normal: Enter or Escape or $mod+r
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"
-
-bar {
-    font pango:Noto Mono For Powerline, FontAwesome 8
-    status_command i3status-rs /home/hurrtz/.config/i3/status.toml
-    position top
-    tray_output primary
-    mode dock
-    colors {
-      separator #757575
-      background $bg-color
-      statusline #dddddd
-      focused_workspace $bg-color $bg-color $text-color
-      active_workspace $bg-color $bg-color $text-color
-      inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-      urgent_workspace $urgent-bg-color $urgent-bg-color $text-color
-    }
-}
 
 #sticky window
 bindsym $mod+Shift+s sticky toggle
@@ -180,37 +142,38 @@ for_window [class="Spotify"] move to workspace $workspace10
 for_window [class="Simplenote"] move to workspace $workspace8
 
 #default workspaces
-assign [class="Spotify"] $workspace10
+# assign [class="Spotify"] $workspace10
 assign [class="Evolution"] $workspace7
 assign [class="Chromium"] $workspace2
-assign [class="Opera"] $workspace9
+# assign [class="Opera"] $workspace9
 assign [class="Finder"] $workspace6
 
 #key bindings
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse set Master '5%+'
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse set Master '5%-'
+bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
 bindsym XF86AudioPlay exec playerctl play
 bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20
+bindsym XF86MonBrightnessUp exec xbacklight -inc 2 && exec notify-send " $( xbacklight -get )%"
+bindsym XF86MonBrightnessDown exec xbacklight -dec 2 && exec notify-send " $( xbacklight -get )%"
 bindsym $mod+Shift+b exec opera # browser
-bindsym $mod+Return exec kitty
-bindsym $mod+Shift+Return exec --no-startup-id kitty -name "floating_kitty"
+bindsym $mod+Return exec urxvt
+bindsym $mod+Shift+Return exec --no-startup-id urxvt -name "floating_urxvt"
 bindsym $mod+Shift+q kill
 bindsym Print exec screenshot
 bindsym $mod+Shift+p exec i3lock-fancy
 bindsym $mod+space exec "rofi -combi-modi drun,run -show combi -modi combi,'calculator:qalc +u8 -nocurrencies' -sidebar-mode -lines 5"
 
 # startup
-exec_always --no-startup-id feh --bg-scale /home/hurrtz/Pictures/wallpaper.jpg
-exec --no-startup-id kitty
-exec --no-startup-id kitty --class Finder ranger
-exec --no-startup-id spotify
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec_always --no-startup-id feh --bg-scale /home/hurrtz/Bilder/wallpaper.jpg
+exec --no-startup-id urxvt
+exec --no-startup-id urxvt ranger
+# exec --no-startup-id spotify
 exec --no-startup-id simplenote
-exec --no-startup-id opera
+# exec --no-startup-id opera
 exec --no-startup-id chromium
 exec --no-startup-id evolution
 exec_always --no-startup-id setxkbmap -option ctrl:nocaps
