@@ -8,21 +8,25 @@ set $right l
 set $bg-color #2f343f
 set $inactive-bg-color #2f343f
 set $text-color #f3f4f5
-set $inactive-text-color #676e7d
+set $inactive-text-color #cccccc
 set $urgent-bg-color #e53935
 
-# window colors
-#                         border                background            text                    indicator
-client.focused            $bg-color             $bg-color             $text-color             #00ff00
-client.unfocused          $inactive-bg-color    $inactive-bg-color    $inactive-text-color    #00ff00
-client.focused_inactive   $inactive-bg-color    $inactive-bg-color    $inactive-text-color    #00ff00
-client.urgent             $urgent-bg-color      $urgent-bg-color      $text-color             #00ff00
+set $active-window-bg-color #ffd166
+set $active-window-fg-color #000000
 
-new_window 1pixel
+# window colors
+#                         border                background              text                    indicator
+client.focused            $bg-color             $active-window-bg-color $active-window-fg-color $urgent-bg-color
+client.unfocused          $inactive-bg-color    $inactive-bg-color      $inactive-text-color    $urgent-bg-color
+client.focused_inactive   $inactive-bg-color    $inactive-bg-color      $inactive-text-color    $urgent-bg-color
+client.urgent             $urgent-bg-color      $urgent-bg-color        $text-color             $urgent-bg-color
+
+default_border pixel 0
+default_floating_border pixel 0
 
 hide_edge_borders both
 
-font pango:Noto Mono For Powerline 8
+font pango:Source Code Pro Powerline 12
 
 floating_modifier $mod
 
@@ -137,6 +141,8 @@ bindsym $mod+r mode "resize"
 #sticky window
 bindsym $mod+Shift+s sticky toggle
 
+for_window [class=".*"] title_format "<span font='8' font_family='Operator Mono Light'>  %title</span>"
+
 #floating
 for_window [class="Spotify"] move to workspace $workspace10
 for_window [class="Simplenote"] move to workspace $workspace8
@@ -167,6 +173,7 @@ bindsym $mod+Shift+p exec i3lock-fancy -p
 bindsym $mod+space exec "rofi -combi-modi drun,run -show combi -modi combi,'calculator:qalc +u8 -nocurrencies' -sidebar-mode -lines 5"
 
 # startup
+exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec_always --no-startup-id dunst -config /home/hurrtz/.config/dunst/dunst
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id feh --bg-scale /home/hurrtz/Pictures/wallpaper.jpg

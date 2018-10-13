@@ -133,6 +133,11 @@ label-focused-padding = 1
 label-unfocused-padding = 1
 label-urgent-padding = 1
 
+[module/redshift]
+type = custom/script
+label = 
+exec = /home/hurrtz/.config/polybar/redshift.sh
+
 [module/time]
 type = internal/date
 interval = 1.0
