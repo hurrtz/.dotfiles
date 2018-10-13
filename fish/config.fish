@@ -4,6 +4,10 @@ set -g fish_pager_color_progress 'cyan'
 set PATH $PATH /home/hurrtz/.linuxbrew/bin
 set PATH $PATH /home/hurrtz/bin
 
+set -g WINEARCH 'win32'
+
+set fish_function_path $fish_function_path "/urs/lib/python3.7/site-packages/powerline/bindings/fish"
+
 function sudo
     if test "$argv" = !!
         eval command sudo $history[1]

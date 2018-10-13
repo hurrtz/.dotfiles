@@ -9,5 +9,6 @@ package sublime
 package tab
 package weather
 package z
+theme agnoster
 theme budspencer
 theme default

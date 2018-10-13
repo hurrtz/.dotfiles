@@ -70,16 +70,16 @@ bindsym $mod+Shift+space floating toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
-set $workspace1 ""
-set $workspace2 ""
-set $workspace3 ""
-set $workspace4 ""
-set $workspace5 ""
-set $workspace6 ""
-set $workspace7 ""
-set $workspace8 ""
-set $workspace9 ""
-set $workspace10 ""
+set $workspace1 "1:"
+set $workspace2 "2:"
+set $workspace3 "3:"
+set $workspace4 "4:"
+set $workspace5 "5:"
+set $workspace6 "6:"
+set $workspace7 "7:"
+set $workspace8 "8:"
+set $workspace9 "9:"
+set $workspace10 "10:"
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -143,10 +143,10 @@ for_window [class="Simplenote"] move to workspace $workspace8
 
 #default workspaces
 # assign [class="Spotify"] $workspace10
-assign [class="Evolution"] $workspace7
+assign [class="Thunderbird"] $workspace7
 assign [class="Chromium"] $workspace2
-# assign [class="Opera"] $workspace9
-assign [class="Finder"] $workspace6
+assign [class="Opera"] $workspace9
+assign [class="Ranger"] $workspace6
 
 #key bindings
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse set Master '5%+'
@@ -156,26 +156,27 @@ bindsym XF86AudioPlay exec playerctl play
 bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
-bindsym XF86MonBrightnessUp exec xbacklight -inc 2 && exec notify-send " $( xbacklight -get )%"
-bindsym XF86MonBrightnessDown exec xbacklight -dec 2 && exec notify-send " $( xbacklight -get )%"
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5
 bindsym $mod+Shift+b exec opera # browser
 bindsym $mod+Return exec urxvt
 bindsym $mod+Shift+Return exec --no-startup-id urxvt -name "floating_urxvt"
 bindsym $mod+Shift+q kill
 bindsym Print exec screenshot
-bindsym $mod+Shift+p exec i3lock-fancy
+bindsym $mod+Shift+p exec i3lock-fancy -p
 bindsym $mod+space exec "rofi -combi-modi drun,run -show combi -modi combi,'calculator:qalc +u8 -nocurrencies' -sidebar-mode -lines 5"
 
 # startup
+exec_always --no-startup-id dunst -config /home/hurrtz/.config/dunst/dunst
 exec_always --no-startup-id ~/.config/polybar/launch.sh
-exec_always --no-startup-id feh --bg-scale /home/hurrtz/Bilder/wallpaper.jpg
+exec_always --no-startup-id feh --bg-scale /home/hurrtz/Pictures/wallpaper.jpg
 exec --no-startup-id urxvt
-exec --no-startup-id urxvt ranger
+exec --no-startup-id ranger
 # exec --no-startup-id spotify
 exec --no-startup-id simplenote
 # exec --no-startup-id opera
 exec --no-startup-id chromium
-exec --no-startup-id evolution
+exec --no-startup-id thunderbird
 exec_always --no-startup-id setxkbmap -option ctrl:nocaps
 exec --no-startup-id compton -bc -r 3 -l -4 -t -4 --shadow-exclude '_GTK_FRAME_EXTENTS@:c' -f --config /home/hurrtz/.config/compton/compton.conf
 

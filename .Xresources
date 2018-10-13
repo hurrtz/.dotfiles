@@ -6,7 +6,7 @@ URxvt*font: xft:Source Code Pro for Powerline:size=12
 URxvt*boldFont: xft:Source Code Pro for Powerline
 URxvt.color12: rgb:5c/5c/ff
 
-URxvt*termName: rxvt-unicode-256color
+URxvt*termName: xterm-256color
 
 !! Fix the annoying gaps between powerline symbols
 URxvt.letterSpace: -1
@@ -27,7 +27,7 @@ Xft.lcdfilter: lcddefault
 URxvt.scrollBar: false
 
 ! Set terminal padding
-URxvt.internalBorder: 36 
+URxvt.internalBorder: 0
 
 ! Enables copy/paste with Ctrl-Shift-C/V
 URxvt.iso14755: false
