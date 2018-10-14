@@ -43,7 +43,6 @@ font-3 = "Font Awesome 5 Brands:pixelsize=12;3"
 background = ${self.bckgrd}
 background-alt = ${self.select}
 foreground = #A5ffffff
-;primary = ${xrdb:accent}
 primary = ${self.accent}
 alert = #bd2c40
 transparent = #00000000
@@ -54,16 +53,31 @@ border-color = 0
 ;---------------;
 
 fixed-center = true
-padding-left = 2 
+padding-left = 2
 padding-right = 2
-module-margin = 1.5
+module-margin = 1
 
+[bar/primary]
+inherit = bar/_base
+background = #99121212
+height = 50
+radius = 10,10
+monitor = DP-2
 modules-left = i3
 modules-center =
 modules-right = wlan cpu backlight volume battery date time
 
-tray-background = #99121212
-tray-maxsize = 0 ; because of current bug with missing transparency in tray icons, would look shity otherwise
+[bar/secondary]
+inherit = bar/_base
+background = #99121212
+height = 50
+radius = 10,10
+monitor = DP-4
+modules-left = i3
+modules-center =
+modules-right =
+tray-background = #00121212
+tray-position = right
 
 ;---------;
 ; MODULES ;
@@ -77,6 +91,7 @@ enable-scroll = false
 label-unfocused-foreground = #afafaf
 label-focused-foreground = #ffd166
 label-urgent-foreground = #06d6a0
+label-visible-padding = 1
 label-focused-padding = 1
 label-unfocused-padding = 1
 label-urgent-padding = 1
@@ -148,19 +163,3 @@ label =  %gb_used%
 type = internal/network
 interface = wlp0s20f3
 label-connected =  %downspeed% |  %upspeed%
-
-[bar/primary]
-inherit = bar/_base
-background = #99121212
-tray-position = center
-height = 50
-radius = 10,10
-monitor = DP-2
-
-[bar/secondary]
-inherit = bar/_base
-background = #99121212
-tray-position = center
-height = 50
-radius = 10,10
-monitor = DP-4
