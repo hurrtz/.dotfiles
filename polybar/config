@@ -3,7 +3,7 @@ accent = #F69CDA
 bckgrd = #121212
 select = #222222
 
-[bar/white]
+[bar/_base]
 
 ;------------;
 ; DIMENSIONS ;
@@ -24,7 +24,6 @@ border-left-size = 10
 ;----------;
 
 bottom = false
-monitor = DP-2
 wm-restack = none
 override-redirect = false
 
@@ -65,57 +64,6 @@ modules-right = wlan cpu backlight volume battery date time
 
 tray-background = #99121212
 tray-maxsize = 0 ; because of current bug with missing transparency in tray icons, would look shity otherwise
-
-[bar/mpd]
-;------------;
-; DIMENSIONS ;
-;------------;
-
-width = 100%
-height = 20
-offset-y = 0
-offset-x = 0
-
-border-top-size = 10
-border-bottom-size = 0
-border-right-size = 10
-border-left-size = 10
-
-;----------;
-; LOCATION ;
-;----------;
-
-bottom = true
-monitor = DP-2
-wm-restack = none
-override-redirect = false
-
-;-------;
-; FONTS ;
-;-------;
-
-font-0 = Hack:size=10;3
-font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=10;3"
-font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=10;3"
-font-3 = "Font Awesome 5 Brands:pixelsize=10;3"
-
-;--------;
-; COLORS ;
-;--------;
-
-background = 0
-foreground = #c5a9f9
-border-color = 0
-
-;---------------;
-; MISCELLANEOUS ;
-;---------------;
-
-fixed-center = true
-padding-left = 2 
-padding-right = 2
-module-margin = 1.5
-modules-center = mpd
 
 ;---------;
 ; MODULES ;
@@ -201,9 +149,18 @@ type = internal/network
 interface = wlp0s20f3
 label-connected =  %downspeed% |  %upspeed%
 
-[bar/float]
-inherit = bar/white
+[bar/primary]
+inherit = bar/_base
 background = #99121212
 tray-position = center
 height = 50
 radius = 10,10
+monitor = DP-2
+
+[bar/secondary]
+inherit = bar/_base
+background = #99121212
+tray-position = center
+height = 50
+radius = 10,10
+monitor = DP-4

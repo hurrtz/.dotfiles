@@ -14,6 +14,9 @@ set $urgent-bg-color #e53935
 set $active-window-bg-color #ffd166
 set $active-window-fg-color #000000
 
+set $monitor-primary DP-2
+set $monitor-secondary DP-4
+
 # window colors
 #                         border                background              text                    indicator
 client.focused            $bg-color             $active-window-bg-color $active-window-fg-color $urgent-bg-color
@@ -74,40 +77,51 @@ bindsym $mod+Shift+space floating toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
-set $workspace1 "1:"
-set $workspace2 "2:"
-set $workspace3 "3:"
-set $workspace4 "4:"
-set $workspace5 "5:"
-set $workspace6 "6:"
-set $workspace7 "7:"
-set $workspace8 "8:"
-set $workspace9 "9:"
-set $workspace10 "10:"
+#set $workspace1 "1:"
+#set $workspace2 "2:"
+#set $workspace3 "3:"
+#set $workspace4 "4:"
+#set $workspace5 "5:"
+#set $workspace6 "6:"
+#set $workspace7 "7:"
+#set $workspace8 "8:"
+#set $workspace9 "9:"
+#set $workspace10 "10:"
+
+workspace 1 output $monitor-primary
+workspace 2 output $monitor-primary
+workspace 3 output $monitor-primary
+workspace 4 output $monitor-primary
+workspace 5 output $monitor-primary
+workspace 6 output $monitor-secondary
+workspace 7 output $monitor-secondary
+workspace 8 output $monitor-secondary
+workspace 9 output $monitor-secondary
+workspace 0 output $monitor-secondary
 
 # switch to workspace
-bindsym $mod+1 workspace $workspace1
-bindsym $mod+2 workspace $workspace2
-bindsym $mod+3 workspace $workspace3
-bindsym $mod+4 workspace $workspace4
-bindsym $mod+5 workspace $workspace5
-bindsym $mod+6 workspace $workspace6
-bindsym $mod+7 workspace $workspace7
-bindsym $mod+8 workspace $workspace8
-bindsym $mod+9 workspace $workspace9
-bindsym $mod+0 workspace $workspace10
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 0
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $workspace1
-bindsym $mod+Shift+2 move container to workspace $workspace2
-bindsym $mod+Shift+3 move container to workspace $workspace3
-bindsym $mod+Shift+4 move container to workspace $workspace4
-bindsym $mod+Shift+5 move container to workspace $workspace5
-bindsym $mod+Shift+6 move container to workspace $workspace6
-bindsym $mod+Shift+7 move container to workspace $workspace7
-bindsym $mod+Shift+8 move container to workspace $workspace8
-bindsym $mod+Shift+9 move container to workspace $workspace9
-bindsym $mod+Shift+0 move container to workspace $workspace10
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 0
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -144,15 +158,15 @@ bindsym $mod+Shift+s sticky toggle
 for_window [class=".*"] title_format "<span font='8' font_family='Operator Mono Light'>  %title</span>"
 
 #floating
-for_window [class="Spotify"] move to workspace $workspace10
-for_window [class="Simplenote"] move to workspace $workspace8
+for_window [class="Spotify"] move to workspace 10
+for_window [class="Simplenote"] move to workspace 8
 
 #default workspaces
-# assign [class="Spotify"] $workspace10
-assign [class="Thunderbird"] $workspace7
-assign [class="Chromium"] $workspace2
-assign [class="Opera"] $workspace9
-assign [class="Ranger"] $workspace6
+# assign [class="Spotify"] workspace 10
+assign [class="Thunderbird"] workspace 7
+assign [class="Chromium"] workspace 2
+assign [class="Opera"] workspace 9
+assign [class="Ranger"] workspace 6
 
 #key bindings
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse set Master '5%+'
