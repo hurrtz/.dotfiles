@@ -3,6 +3,7 @@ set -g fish_pager_color_progress 'cyan'
 
 set PATH $PATH /home/hurrtz/.linuxbrew/bin
 set PATH $PATH /home/hurrtz/bin
+set PATH $PATH /home/hurrtz/scripts
 
 set -g WINEARCH 'win32'
 
