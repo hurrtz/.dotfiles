@@ -15,7 +15,7 @@ set $active-window-bg-color #ffd166
 set $active-window-fg-color #000000
 
 set $monitor-primary DP-2
-set $monitor-secondary DP-3
+set $monitor-secondary DP-0
 
 # window colors
 #                         border                background            text                    indicator
@@ -198,7 +198,7 @@ bindsym $mod+Shift+p exec i3lock-fancy -p
 bindsym $mod+space exec "rofi -combi-modi drun,run -show combi -modi combi,'calculator:qalc +u8 -nocurrencies' -sidebar-mode -lines 5"
 
 # startup
-exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
+#exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec_always --no-startup-id dunst -config /home/hurrtz/.config/dunst/dunst
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id feh --bg-scale /home/hurrtz/Pictures/wallpaper.jpg

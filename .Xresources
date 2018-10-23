@@ -26,7 +26,7 @@ URxvt.scrollBar: false
 
 ! Set terminal padding
 URxvt.borderWidth: 0
-URxvt.internalBorder: 0
+URxvt.internalBorder: 5
 URxvt.externalBorder: 0
 
 ! Enables copy/paste with Ctrl-Shift-C/V

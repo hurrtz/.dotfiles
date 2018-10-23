@@ -71,3 +71,4 @@ function tag
     	command git push --tags
     end
 end
+rvm default
