@@ -1,0 +1,165 @@
+[colors]
+accent = #F69CDA
+bckgrd = #121212
+select = #222222
+
+[bar/_base]
+
+;------------;
+; DIMENSIONS ;
+;------------;
+
+width = 100%
+height = 20
+offset-y = 0
+offset-x = 0
+
+border-top-size = 10
+border-bottom-size = 0
+border-right-size = 10
+border-left-size = 10
+
+;----------;
+; LOCATION ;
+;----------;
+
+bottom = false
+wm-restack = none
+override-redirect = false
+
+;-------;
+; FONTS ;
+;-------;
+
+font-0 = "Source Code Pro for Powerline:size=15;3"
+font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=12;3"
+font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=12;3"
+font-3 = "Font Awesome 5 Brands:pixelsize=12;3"
+
+;--------;
+; COLORS ;
+;--------;
+
+background = ${self.bckgrd}
+background-alt = ${self.select}
+foreground = #A5ffffff
+primary = ${self.accent}
+alert = #bd2c40
+transparent = #00000000
+border-color = 0
+
+;---------------;
+; MISCELLANEOUS ;
+;---------------;
+
+fixed-center = true
+padding-left = 2
+padding-right = 2
+module-margin = 1
+
+[bar/primary]
+inherit = bar/_base
+background = #99121212
+height = 50
+radius = 10,10
+monitor = DP-2
+modules-left = i3
+modules-center =
+modules-right = wlan cpu backlight volume battery date time
+
+[bar/secondary]
+inherit = bar/_base
+background = #99121212
+height = 50
+radius = 10,10
+monitor = DP-0
+modules-left = i3
+modules-center =
+modules-right =
+tray-background = #00121212
+tray-position = right
+
+;---------;
+; MODULES ;
+;---------;
+
+[module/i3]
+type = internal/i3
+pin-workspaces = true
+strip-wsnumbers = true
+enable-scroll = false
+label-unfocused-foreground = #afafaf
+label-focused-foreground = #ffd166
+label-urgent-foreground = #06d6a0
+label-visible-padding = 1
+label-focused-padding = 1
+label-unfocused-padding = 1
+label-urgent-padding = 1
+
+[module/redshift]
+type = custom/script
+label = 
+exec = /home/hurrtz/.config/polybar/redshift.sh
+
+[module/time]
+type = internal/date
+interval = 1.0
+date =  %H:%M
+
+[module/date]
+type = internal/date
+date =  %d.%m.%Y
+label = %date%
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+poll-interval = 1
+full-at = 95
+label-discharging = %percentage%%
+label-charging = %percentage%%
+label-full = %percentage%%
+format-discharging = <ramp-capacity> <label-discharging>
+format-full = <ramp-capacity> <label-full>
+format-charging =  <label-charging>
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+[module/volume]
+type = internal/volume
+format-volume = <ramp-volume> <label-volume>
+format-muted =  0%
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+
+[module/backlight]
+type = internal/xbacklight
+format = <ramp> <label>
+label = %percentage%%
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+
+[module/wlan]
+type = internal/network
+interface = wlp0s20f3
+interval = 5
+label-connected =  %essid%
+label-disconnected =  Not Connected
+
+[module/cpu]
+type = internal/cpu
+label =  %percentage%%
+
+[module/memory]
+type = internal/memory
+label =  %gb_used%
+
+[module/network]
+type = internal/network
+interface = wlp0s20f3
+label-connected =  %downspeed% |  %upspeed%

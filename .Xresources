@@ -1,12 +1,10 @@
 ! URxvt
 
-! URxvt*font: -*-clean-medium-r-*--16-*-*-*-*-*-*-*
 URxvt*font: xft:Source Code Pro for Powerline:size=12
-! URxvt*boldFont: -*-clean-medium-r-*--12-*-*-*-*-*-*-*
-URxvt*boldFont: xft:Source Code Pro for Powerline
+URxvt*boldFont: xft:Source Code Pro for Powerline:size=12
 URxvt.color12: rgb:5c/5c/ff
 
-URxvt*termName: rxvt-unicode-256color
+URxvt*termName: xterm-256color
 
 !! Fix the annoying gaps between powerline symbols
 URxvt.letterSpace: -1
@@ -27,7 +25,9 @@ Xft.lcdfilter: lcddefault
 URxvt.scrollBar: false
 
 ! Set terminal padding
-URxvt.internalBorder: 36 
+URxvt.borderWidth: 0
+URxvt.internalBorder: 5
+URxvt.externalBorder: 0
 
 ! Enables copy/paste with Ctrl-Shift-C/V
 URxvt.iso14755: false
@@ -50,42 +50,45 @@ URxvt.matcher.button: 1
 ! Colors {{{
 
 ! special
+*.foreground:   #f1ebeb
+*.background:   #272822
+*.cursorColor:  #f1ebeb
+
+! black
+*.color0:       #48483e
+*.color8:       #76715e
+
+! red
+*.color1:       #dc2566
+*.color9:       #fa2772
+
+! green
+*.color2:       #8fc029
+*.color10:      #a7e22e
+
+! yellow
+*.color3:       #d4c96e
+*.color11:      #e7db75
+
+! blue
+*.color4:       #55bcce
+*.color12:      #66d9ee
+
+! magenta
+*.color5:       #9358fe
+*.color13:      #ae82ff
+
+! cyan
+*.color6:       #56b7a5
+*.color14:      #66efd5
+
+! white
+*.color7:       #acada1
+*.color15:      #cfd0c2
+
+! special
 *foreground:   #f0f0f0
 *background:   #232c33
 *cursorColor:  #f0f0f0
-
-
-! black
-! Second black is grey
-*color0:       #232c33
-*color8:       #70838c
-
-! red
-*color1:       #99736e
-*color9:       #99736e
-
-! green
-*color2:       #78a090
-*color10:      #78a090
-
-! yellow
-*color3:       #bfb7a1
-*color11:      #bfb7a1
-
-! blue
-*color4:       #7c9fa6
-*color12:      #7c9fa6
-
-! magenta
-*color5:       #BF9C86
-*color13:      #BF9C86
-
-! cyan
-*color6:       #99BFBA
-*color14:      #99BFBA
-
-! white
-*color7:       #f0f0f0
-*color15:      #f0f0f0
 
 ! }}}
