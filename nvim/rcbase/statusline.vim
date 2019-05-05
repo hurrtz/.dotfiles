@@ -1,15 +1,10 @@
-scriptencoding utf-8
-
-set laststatus=2
-set showtabline=2
-
 let g:lightline = {
       \   'colorscheme': 'solarized',
       \   'active': {
       \     'left': [ [ 'mode', 'paste'  ],
       \               [ 'fugitive', 'gitgutter' ],
       \               [ 'filename' ] ],
-      \     'right': [ [ 'ale', 'lineinfo' ],
+      \     'right': [ [ 'cocstatus', 'lineinfo' ],
       \                [ 'percent' ],
       \                [ 'fileformat', 'fileencoding', 'filetype' ] ]
       \   },
@@ -23,8 +18,9 @@ let g:lightline = {
       \     'fileencoding': 'LightLineFileencoding',
       \     'mode': 'LightLineMode',
       \     'gitgutter': 'LightLineGitGutter',
-      \     'ale': 'LightLineALE',
+      \     'cocstatus': 'coc#status',
       \   },
+      \   'currentfunction': 'CocCurrentFunction',
       \   'separator': { 'left': '', 'right': ''},
       \   'subseparator': { 'left': '|', 'right': '|'}
       \ }
@@ -49,19 +45,6 @@ function! LightLineFilename()
   return ('' !=# LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
         \ ('' !=# expand('%') ? expand('%') : '[No Name]') .
         \ ('' !=# LightLineModified() ? ' ' . LightLineModified() : '')
-endfunction
-
-function! LightLineALE() abort
-    let l:counts = ale#statusline#Count(bufnr(''))
-
-    let l:all_errors = l:counts.error + l:counts.style_error
-    let l:all_non_errors = l:counts.total - l:all_errors
-
-    return l:counts.total == 0 ? 'OK' : printf(
-    \   '%dW %dE',
-    \   all_non_errors,
-    \   all_errors
-    \)
 endfunction
 
 function! LightLineFileformat()
@@ -109,4 +92,8 @@ function! LightLineGitGutter()
     endif
   endfor
   return join(l:ret, ' ')
+endfunction
+
+function! CocCurrentFunction()
+    return get(b:, 'coc_current_function', '')
 endfunction

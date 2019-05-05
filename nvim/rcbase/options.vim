@@ -7,6 +7,8 @@ set autoread
 set autowrite
 set background=dark
 set backspace=2
+set backupdir=~/.local/share/nvim/backup " Don't put backups in current dir
+set backup
 set clipboard=unnamed
 set complete=.,w,b,t,kspell
 set completeopt=menu,longest,menuone
@@ -14,6 +16,7 @@ set copyindent
 set cursorline
 set expandtab
 set exrc
+set fillchars+=vert:.
 set foldenable
 set foldlevelstart=10
 set foldnestmax=10
@@ -28,7 +31,6 @@ set list
 set listchars=tab:│\ ,trail:•,extends:❯,precedes:❮
 set modelines=2
 set mouse=
-set nobackup
 set nocompatible
 set noerrorbells
 set noshowmode
@@ -43,11 +45,12 @@ set runtimepath+=~/.fzf
 set ruler
 set scrolloff=2
 set secure
-set shell=/usr/bin/fish
+set shell=/usr/local/bin/zsh
 set shiftround
 set shiftwidth=2
 set showcmd
 set showmatch
+set showtabline=2
 set smartcase
 set splitbelow
 set splitright

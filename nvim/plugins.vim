@@ -1,64 +1,108 @@
-" Interface
-Plug 'chriskempson/base16-vim'
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'zhaocai/GoldenView.Vim'
-Plug 'itchyny/lightline.vim'
+" check whether vim-plug is installed and install it if necessary
+let plugpath = expand('<sfile>:p:h'). '/autoload/plug.vim'
 
-" Editing and Formatting
-Plug 'ap/vim-css-color'
-Plug 'jiangmiao/auto-pairs'
-Plug 'mbbill/undotree'
-Plug 'sbdchd/neoformat'
-Plug 'mattn/emmet-vim'
-
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
+if !filereadable(plugpath)
+    if executable('curl')
+        let plugurl = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+        call system('curl -fLo ' . shellescape(plugpath) . ' --create-dirs ' . plugurl)
+        if v:shell_error
+            echom "Error downloading vim-plug. Please install it manually.\n"
+            exit
+        endif
+    else
+        echom "vim-plug not installed. Please install it manually or install curl.\n"
+        exit
+    endif
 endif
 
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install -g tern' }
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+call plug#begin('~/.config/nvim/plugged')
+
+" === Editing === "
+" Trailing whitespace highlighting & automatic fixing
+Plug 'ntpeters/vim-better-whitespace'
+
+" auto-close plugin
+Plug 'rstacruz/vim-closer'
+
+" Improved motion in Vim
+Plug 'easymotion/vim-easymotion'
+
+" Intellisense Engine
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+
+" formatters for different file tupes
+Plug 'sbdchd/neoformat'
+
+" Tmux/Neovim movement integration
+Plug 'christoomey/vim-tmux-navigator'
+
+" Denite - Fuzzy finding, buffer management
+Plug 'Shougo/denite.nvim'
+
+" Snippet support
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
+
+" Print function signatures in echo area
+Plug 'Shougo/echodoc.vim'
+
+" Automatically adding counterpart of brackets
+Plug 'jiangmiao/auto-pairs'
+
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'w0rp/ale'
 Plug 'Yggdroot/indentLine'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
-" Syntax
+" === Git === "
+" Enable git changes to be shown in sign column
+Plug 'mhinz/vim-signify'
+Plug 'tpope/vim-fugitive'
+
+" === Javascript === "
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+
+" Generate JSDoc commands based on function signature
+Plug 'heavenshell/vim-jsdoc'
+
+" === Syntax Highlighting === "
+" Syntax highlighting for javascript libraries
+Plug 'othree/javascript-libraries-syntax.vim'
+
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'elzr/vim-json'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'othree/es.next.syntax.vim'
-Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'othree/yajs.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'sheerun/vim-polyglot'
 Plug 'tmux-plugins/vim-tmux'
 
-" Navigation
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'justinmk/vim-sneak'
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'tmhedberg/matchit'
+" Improved syntax highlighting and indentation
+Plug 'othree/yajs.vim'
 
-" Source Control
-Plug 'airblade/vim-gitgutter'
-Plug 'gregsexton/gitv'
-Plug 'tpope/vim-fugitive'
+" === UI === "
+" File explorer
+Plug 'scrooloose/nerdtree'
 
-" Miscellaneous
-Plug 'craigemery/vim-autotag'
-Plug 'majutsushi/tagbar'
-Plug 'tpope/vim-dispatch'
+" Visual undo tree
+Plug 'mbbill/undotree'
+
+" Colorscheme
+Plug 'chriskempson/base16-vim'
+
+" Status line
+Plug 'itchyny/lightline.vim'
+
+" Icons
 Plug 'ryanoasis/vim-devicons'
-Plug 'skywind3000/asyncrun.vim'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+
+Plug 'wakatime/vim-wakatime'
+
+" Initialize plugin system
+call plug#end()
