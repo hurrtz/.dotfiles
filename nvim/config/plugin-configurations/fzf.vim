@@ -24,4 +24,3 @@ function! FloatingFZF()
 endfunction
 
 nnoremap <silent> <C-p> :call fzf#vim#files('.', {'options': '--prompt ""'})<CR>
-nnoremap <silent> <C-S-p> :Ag<CR>
