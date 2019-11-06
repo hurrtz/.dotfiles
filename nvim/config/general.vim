@@ -79,6 +79,7 @@ if has('wildmenu')
 	set wildignore+=**/node_modules/**,**/bower_modules/**,*/.sass-cache/*
 	set wildignore+=application/vendor/**,**/vendor/ckeditor/**,media/vendor/**
 	set wildignore+=__pycache__,*.egg-info,.pytest_cache
+	set wildignore+=**/coverage/**
 endif
 
 " }}}
@@ -234,6 +235,9 @@ set colorcolumn=80      " Highlight the 80th character limit
 set display=lastline
 set number              " Show line number
 set relativenumber      " Make line numbers relative
+
+:autocmd InsertEnter * set cul
+:autocmd InsertLeave * set nocul
 
 augroup numbertoggle
   " Set non-active panes to absolute numbers

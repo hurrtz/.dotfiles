@@ -34,7 +34,7 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 
 " Buffers
 " show all buffer 
-nnoremap <leader><Return> :buffers<CR>:buffer<Space>
+" nnoremap <leader><Return> :buffers<CR>:buffer<Space>
 " go to the next modifie  (unsaved) buffe 
 nnoremap <leader>bc  :bm<CR>
 " like :bm but in a new split
@@ -64,7 +64,7 @@ map      <S-Tab>     <C-w>p<CR>
 
 " Tabs
 " new empty tab
-nnoremap <leader>t  :tabnew<CR>
+" nnoremap <leader>t  :tabnew<CR>
 " go to previous tab
 nnoremap <leader>tp :tabp<CR>
 " go to next tab

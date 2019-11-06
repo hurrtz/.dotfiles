@@ -90,9 +90,6 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'itchyny/calendar.vim'
 Plug 'vimwiki/vimwiki'
-" Plug 'scrooloose/nerdtree'
-" Plug 'Xuyuanp/nerdtree-git-plugin'
-" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
@@ -102,24 +99,6 @@ Plug 'Raimondi/delimitMate'
 Plug 'wellle/tmux-complete.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-denite'
-Plug 'prettier/vim-prettier', { 'do': 'npm i -g yarn && yarn install' }
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'npm i -g yarn && yarn install',
-  \ 'branch': 'release/1.x',
-  \ 'for': [
-    \ 'javascript',
-    \ 'typescript',
-    \ 'css',
-    \ 'less',
-    \ 'scss',
-    \ 'json',
-    \ 'graphql',
-    \ 'markdown',
-    \ 'vue',
-    \ 'ruby',
-    \ 'html'
-  \ ]
-\ }
 
 " denite "
 Plug 'Shougo/denite.nvim'

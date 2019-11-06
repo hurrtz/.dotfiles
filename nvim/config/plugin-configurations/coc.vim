@@ -13,7 +13,7 @@ augroup automake
   autocmd!
 
   " COC handles auto-linting . Setup formatting via prettier
-  autocmd BufWritePre *.js,*.json,*.ts Prettier
+  autocmd BufWritePre *.js,*.jsx,*.json,*.ts,*.tsx PrettierAsync
 augroup END
 
 " Trigger completion via same as omni-completion
