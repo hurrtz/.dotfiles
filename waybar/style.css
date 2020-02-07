@@ -47,7 +47,7 @@
   border-left: none;
 }
 
-#mode, #battery, #cpu, #memory, #network, #pulseaudio, #idle_inhibitor, #backlight, #custom-storage, #custom-spotify, #custom-weather, #custom-mail, #clock {
+#mode, #battery, #cpu, #memory, #network, #pulseaudio, #idle_inhibitor, #backlight, #custom-storage, #custom-spotify, #custom-weather, #custom-mail, #clock, #temperature {
   margin: 4px 2px;
   padding: 0 6px;
   background-color: @base02;
@@ -55,9 +55,21 @@
   min-width: 20px;
 }
 
+#pulseaudio.muted {
+  color: @base0F;
+}
+
+#pulseaudio.bluetooth {
+  color: @base0C;
+}
+
 #clock {
   margin-left: 12px;
   margin-right: 4px;
   background-color: transparent;
+}
+
+#temperature.critical {
+  color: @base0F;
 }
 

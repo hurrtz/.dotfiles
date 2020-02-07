@@ -5,13 +5,24 @@
 
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
-    "modules-right": ["tray", "custom/storage", "cpu","memory", "pulseaudio", "network", "battery", "clock"],
+    "modules-right": ["tray", "custom/storage", "cpu","memory", "temperature", "pulseaudio", "network", "battery", "clock"],
     "sway/mode": {
-        "format": " {}"
+        "format": " {}"
     },
     "sway/workspaces": {
-        "format": "{name}",
-        "disable-scroll": true
+        "format": "{icon}",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "6": "華",
+            "10": "ﱘ",
+            "urgent": "",
+            "focused": "",
+            "default": ""
+        }
     },
     "sway/window": {
         "max-length": 80,
@@ -28,11 +39,12 @@
     },
     "memory": {
         "interval": 30,
-        "format": "{used:0.1f}G/{total:0.1f}G ",
+        "format": "{used:0.2f} / {total:0.0f} GB ",
         "max-length": 10,
         "tooltip": false
     },
     "battery": {
+        "bat": "BAT0",
         "format": "{capacity}% {icon}",
         "format-alt": "{time} {icon}",
         "format-icons": ["", "", "", "", ""],
@@ -43,6 +55,11 @@
             "critical": 10
         },
         "tooltip": false
+    },
+    "temperature": {
+        "critical-threshold": 80,
+	"format-critical": "{temperatureC}° ",
+	"format": "{temperatureC}° "
     },
     "network": {
         "format": "{icon}",
@@ -62,8 +79,8 @@
         "format-alt-click": "click-right",
         "format-muted": "",
         "format-icons": {
-            "phone": [" ", " ", " ", " "],
-            "default": ["", "", "", ""]
+            "phone": [" ", " ", " 墳", " "],
+            "default": ["", "", "墳", ""]
         },
         "scroll-step": 10,
         "on-click": "pavucontrol",
@@ -117,12 +134,6 @@
         "return-type": "json",
         "exec": "~/.config/waybar/modules/mail.py",
         "tooltip": false
-    },
-    "custom/test": {
-        "format": "{}",
-        "exec": "/tmp/test blub",
-        "param": "blah",
-        "interval": 5
     },
     "tray": {
         "icon-size": 18
