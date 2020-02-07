@@ -4,11 +4,10 @@ set $lock swaylock-fancy
 set $power ~/.config/rofi/modi/power
 set $wifi ~/.config/rofi/modi/nmcli
 set $term alacritty
-set $menu rofi -m $(expr $(swaymsg -t get_tree | jq '.nodes | map([recurse(.nodes[]?, .floating_nodes[]?) | .focused] | any) | index(true)') - 1) -show drun -run-command 'swaymsg exec -- {cmd}'
 set $menu rofi -m $(swaymsg -t get_outputs | jq 'map(select(.active) | .focused) | index(true)') -show drun -run-command 'swaymsg exec -- {cmd}'
 set $screenshot grim ~/Pictures/screenshots/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png
 set $screenclip slurp | grim -g - ~/Pictures/screenshots/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png
-set $background ~/Pictures/wallpaper.jpg
+set $background ~/Pictures/wallpaper2.jpg
 
 set $cl_high #009ddc
 set $cl_indi #d9d8d8
@@ -23,16 +22,16 @@ client.unfocused        $cl_back $cl_back $cl_fore $cl_back $cl_back
 client.urgent           $cl_urge $cl_urge $cl_fore $cl_urge $cl_urge
 
 # workspaces
-set $ws1   1:
-set $ws2   2:
-set $ws3   3:
-set $ws4   4:
-set $ws5   5:
-set $ws6   6:
-set $ws7   7:7
-set $ws8   8:8
-set $ws9   9:9
-set $ws0   10:
+set $ws1   1
+set $ws2   2
+set $ws3   3
+set $ws4   4
+set $ws5   5
+set $ws6   6
+set $ws7   7
+set $ws8   8
+set $ws9   9
+set $ws0   10
 
 # Font
 font pango:Sans 12
@@ -69,8 +68,8 @@ output eDP-1 scale 2
 
 # Default workspaces for common programs
 assign [class="^Chromium$"] $ws6
-assign [class="^VSCodium$"] $ws1
-assign [class="^Franz$"] $ws2
+assign [class="^VSCodium$"] $ws2
+assign [class="^Franz$"] $ws3
 assign [class="^Mailspring$"] $ws3
 assign [class="^Spotify$"] $ws10
 
