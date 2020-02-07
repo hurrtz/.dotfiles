@@ -77,6 +77,7 @@ Plug 'liuchengxu/vista.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
+Plug 'janko/vim-test'
 
 " interface "
 Plug 'vim-airline/vim-airline'
