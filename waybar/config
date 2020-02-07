@@ -29,7 +29,7 @@
         "tooltip": false
     },
     "clock": {
-        "format": "{:%a, %d.%m.%w %H:%M}",
+        "format": "{:%a, %d.%m.%Y %H:%M}",
         "tooltip": false
     },
     "cpu": {
