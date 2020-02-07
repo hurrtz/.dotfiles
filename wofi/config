@@ -1,0 +1,5 @@
+mode=drun,run
+prompt=Hello!
+
+normal_window=false
+allow_images=true
