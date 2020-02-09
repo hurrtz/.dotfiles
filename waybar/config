@@ -5,7 +5,7 @@
 
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
-    "modules-right": ["tray", "custom/storage", "cpu","memory", "temperature", "pulseaudio", "network", "battery", "clock"],
+    "modules-right": ["tray", "backlight", "custom/storage", "cpu","memory", "temperature", "pulseaudio", "network", "battery", "clock"],
     "sway/mode": {
         "format": " {}"
     },
@@ -29,7 +29,7 @@
         "tooltip": false
     },
     "clock": {
-        "format": "{:%a, %d.%m.%Y %H:%M}",
+        "format": "{:%a  ·  %d.%m.%Y  ·  %H:%M}",
         "tooltip": false
     },
     "cpu": {
@@ -74,15 +74,18 @@
         "tooltip": false
     },
     "pulseaudio": {
-        "format": "{icon}",
-        "format-alt": "{volume} {icon}",
-        "format-alt-click": "click-right",
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
         "format-muted": "",
         "format-icons": {
-            "phone": [" ", " ", " 墳", " "],
-            "default": ["", "", "墳", ""]
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "default": ""
         },
-        "scroll-step": 10,
+        "scroll-step": 1,
         "on-click": "pavucontrol",
         "tooltip": false
     },
@@ -102,7 +105,8 @@
         "exec": "~/.config/waybar/modules/storage.sh"
     },
     "backlight": {
-        "format": "{icon}",
+        "device": "intel_backlight",
+        "format": "{percent}% {icon}",
         "format-alt": "{percent}% {icon}",
         "format-alt-click": "click-right",
         "format-icons": ["", ""],
