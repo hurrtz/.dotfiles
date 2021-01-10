@@ -22,7 +22,7 @@ if executable('javascript-typescript-stdio')
   autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
 else
   echo "javascript-typescript-stdio not installed!\n"
-  :cq
+"  :cq
 endif
 
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>

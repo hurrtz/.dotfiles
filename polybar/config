@@ -1,165 +1,235 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/polybar/polybar
+;
+;   The README contains a lot of information
+;
+;==========================================================
+
 [colors]
-accent = #F69CDA
-bckgrd = #121212
-select = #222222
-
-[bar/_base]
-
-;------------;
-; DIMENSIONS ;
-;------------;
-
-width = 100%
-height = 20
-offset-y = 0
-offset-x = 0
-
-border-top-size = 10
-border-bottom-size = 0
-border-right-size = 10
-border-left-size = 10
-
-;----------;
-; LOCATION ;
-;----------;
-
-bottom = false
-wm-restack = none
-override-redirect = false
-
-;-------;
-; FONTS ;
-;-------;
-
-font-0 = "Source Code Pro for Powerline:size=15;3"
-font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=12;3"
-font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=12;3"
-font-3 = "Font Awesome 5 Brands:pixelsize=12;3"
-
-;--------;
-; COLORS ;
-;--------;
-
-background = ${self.bckgrd}
-background-alt = ${self.select}
-foreground = #A5ffffff
-primary = ${self.accent}
+background = #00000000
+foreground = #ccffffff
+primary = #ffb52a
+secondary = #e60053
 alert = #bd2c40
-transparent = #00000000
-border-color = 0
 
-;---------------;
-; MISCELLANEOUS ;
-;---------------;
+[bar/bar1]
+;monitor = ${env:MONITOR:HDMI-1}
+width = 100%
+height = 38
 
-fixed-center = true
-padding-left = 2
-padding-right = 2
-module-margin = 1
+background = ${colors.background}
+foreground = ${colors.foreground}
 
-[bar/primary]
-inherit = bar/_base
-background = #99121212
-height = 50
-radius = 10,10
-monitor = DP-2
+line-size = 2
+line-color = ${colors.background}
+
+spacing = 3
+padding-right = 3
+module-margin-left = 0
+module-margin-right = 3
+
+font-0 = Font Awesome 5 Free Brands:style=Regular
+font-1 = Font Awesome 5 Free Regular:style=Regular
+font-2 = Font Awesome 5 Free Solid:style=Solid
+font-3 = Source Sans Pro for Powerline
+font-4 = Unifont
+font-5 = Material Icons
+
 modules-left = i3
-modules-center =
-modules-right = wlan cpu backlight volume battery date time
+modules-right = bitcoin etherium xbacklight pulseaudio filesystem memory cpu temperature wifi ethernet battery date
 
-[bar/secondary]
-inherit = bar/_base
-background = #99121212
-height = 50
-radius = 10,10
-monitor = DP-0
-modules-left = i3
-modules-center =
-modules-right =
-tray-background = #00121212
 tray-position = right
+tray-padding = 3
+tray-offset-y = -2
 
-;---------;
-; MODULES ;
-;---------;
+cursor-click = pointer cursor-scroll = ns-resize [module/xwindow] type = internal/xwindow
 
 [module/i3]
 type = internal/i3
-pin-workspaces = true
-strip-wsnumbers = true
-enable-scroll = false
-label-unfocused-foreground = #afafaf
-label-focused-foreground = #ffd166
-label-urgent-foreground = #06d6a0
-label-visible-padding = 1
-label-focused-padding = 1
-label-unfocused-padding = 1
-label-urgent-padding = 1
 
-[module/redshift]
+format = <label-state> <label-mode>
+
+label-dimmed-underline = ${BAR.background}
+
+label-focused = %index%
+label-focused-padding = 3
+label-focused-underline = #fba922
+
+label-unfocused = %index%
+label-unfocused-padding = 3
+
+label-urgent = %index%
+label-urgent-foreground = #ffffff
+label-urgent-background = #bd2c40
+label-urgent-padding = 3
+label-urgent-underline = #000000
+
+[module/xbacklight]
+type = internal/xbacklight
+
+format = <ramp><label>
+
+label = %percentage%%
+
+ramp-0 = 🌕
+ramp-1 = 🌔
+ramp-2 = 🌓
+ramp-3 = 🌒
+ramp-4 = 🌑
+
+[module/filesystem]
+type = internal/fs
+
+mount-0 = /
+
+; Display fixed precision values
+; Default: false
+fixed-values = true
+
+; Spacing between entries
+; Default: 2
+spacing = 4
+
+label-mounted =   %percentage_free%%
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+label =  %percentage:2%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+label =   %percentage_used%%
+
+[module/bitcoin]
+format = <label>
+label = ₿ %output%€
 type = custom/script
-label = 
-exec = /home/hurrtz/.config/polybar/redshift.sh
+exec = $HOME/.config/polybar/currencyrates.py btc eur
+interval=600
+click-left = firefox --new-window "https://freecurrencyrates.com/en/exchange-rate-history/BTC-EUR/2021"
+click-right = firefox --new-window "https://freecurrencyrates.com/en/convert-BTC-EUR"
 
-[module/time]
-type = internal/date
-interval = 1.0
-date =  %H:%M
+[module/etherium]
+format = <label>
+label = Ξ %output%€
+type = custom/script
+exec = $HOME/.config/polybar/currencyrates.py eth eur
+interval=600
+click-left = firefox --new-window "https://freecurrencyrates.com/en/exchange-rate-history/ETH-EUR/2019"
+click-right = firefox --new-window "https://freecurrencyrates.com/en/convert-ETH-EUR"
+
+[module/wifi]
+type = internal/network
+interface = wlp0s20f3
+interval = 3.0
+
+format-connected = <ramp-signal><label-connected>
+label-connected = %essid%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;label-disconnected = %ifname% disconnected
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+
+[module/ethernet]
+type = internal/network
+interface = enp0s31f6
+interval = 3.0
+
+format-connected-prefix = 
+label-connected = %local_ip%
+
+format-disconnected = <label-disconnected>
+label-disconnected = 
 
 [module/date]
 type = internal/date
-date =  %d.%m.%Y
-label = %date%
+interval = 5
 
-[module/battery]
-type = internal/battery
-battery = BAT0
-poll-interval = 1
-full-at = 95
-label-discharging = %percentage%%
-label-charging = %percentage%%
-label-full = %percentage%%
-format-discharging = <ramp-capacity> <label-discharging>
-format-full = <ramp-capacity> <label-full>
-format-charging =  <label-charging>
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
+date = "  %d.%m."
 
-[module/volume]
-type = internal/volume
-format-volume = <ramp-volume> <label-volume>
-format-muted =  0%
+time =   %H:%M
+
+label = %date%  %time%
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <ramp-volume>
+
+label-muted = 
+label-muted-foreground = #666
+
 ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
 
-[module/backlight]
-type = internal/xbacklight
-format = <ramp> <label>
-label = %percentage%%
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
+click-right = pavucontrol
 
-[module/wlan]
-type = internal/network
-interface = wlp0s20f3
-interval = 5
-label-connected =  %essid%
-label-disconnected =  Not Connected
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP1
+full-at = 98
 
-[module/cpu]
-type = internal/cpu
-label =  %percentage%%
+format-charging = <animation-charging> <label-charging>
 
-[module/memory]
-type = internal/memory
-label =  %gb_used%
+format-discharging = <animation-discharging> <label-discharging>
 
-[module/network]
-type = internal/network
-interface = wlp0s20f3
-label-connected =  %downspeed% |  %upspeed%
+format-full-prefix = "  "
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-framerate = 750
+
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-framerate = 750
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+
+format = <ramp><label>
+format-warn = <ramp><label-warn>
+
+label = %temperature-c%
+label-warn = %temperature-c%
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+
+[settings]
+screenchange-reload = true
+pseudo-transparency = true
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+

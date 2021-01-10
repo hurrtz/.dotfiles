@@ -137,7 +137,7 @@ URxvt.color15:                        #cfd0c2
 ! URxvt Font
 !-------------------------------------------------------------------------------
 
-URxvt.font:                           xft:DejaVu Sans Mono Nerd Font:style=Regular:size=12:antialias=true:hinting=true
-URxvt.boldFont:                       xft:SauceCodePro Nerd Font Mono:style=Bold:size=12:antialias=true:hinting=true
-URxvt.italicFont:                     xft:SauceCodePro Nerd Font Mono:style=Italic:size=12:antialias=true:hinting=true
-URxvt.boldItalicFont:                 xft:SauceCodePro Nerd Font Mono:style=Bold Italic:size=12:antialias=true:hinting=true
+URxvt.font:                           xft:Source Code Pro for Powerline:style=Regular:size=14:antialias=true:hinting=true
+URxvt.boldFont:                       xft:Source Code Pro for Powerline:style=Bold:size=14:antialias=true:hinting=true
+URxvt.italicFont:                     xft:Source Code Pro for Powerline:style=Italic:size=14:antialias=true:hinting=true
+URxvt.boldItalicFont:                 xft:Source Code Pro for Powerline:style=Bold Italic:size=14:antialias=true:hinting=true
