@@ -55,7 +55,7 @@ cursor-click = pointer cursor-scroll = ns-resize [module/xwindow] type = interna
 inherit = bar/abstract
 monitor = eDP-1
 modules-left = i3
-modules-right = xbacklight pulseaudio filesystem memory cpu temperature wifi ethernet battery date
+modules-right = pulseaudio-control xbacklight filesystem memory cpu temperature battery date
 
 [bar/secondary]
 inherit = bar/abstract
@@ -87,6 +87,18 @@ label-urgent-foreground = #ffffff
 label-urgent-background = #bd2c40
 label-urgent-padding = 3
 label-urgent-underline = #000000
+
+[module/pulseaudio-control]
+type = custom/script
+exec = $HOME/scripts/pulseaudio-control.sh --icons-volume " , " --icon-muted " " --sink-nicknames-from "device.description" --sink-nickname "alsa_output.pci-0000_00_1b.0.analog-stereo:  Speakers" --sink-nickname "alsa_output.usb-Kingston_HyperX_Virtual_Surround_Sound_00000000-00.analog-stereo:  Headphones" listen
+tail = true
+label-padding = 3
+label-foreground = ${colors.foreground}
+click-right = exec pavucontrol &
+click-left = $HOME/scripts/pulseaudio-control.sh togmute
+click-middle = $HOME/scripts/pulseaudio-control.sh --sink-blacklist "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2" next-sink
+scroll-up = $HOME/scripts/pulseaudio-control.sh --volume-max 130 up
+scroll-down = $HOME/scripts/pulseaudio-control.sh --volume-max 130 down
 
 [module/xbacklight]
 type = internal/xbacklight
@@ -182,20 +194,6 @@ date = "  %d.%m."
 time =   %H:%M
 
 label = %date%  %time%
-
-[module/pulseaudio]
-type = internal/pulseaudio
-
-format-volume = <ramp-volume>
-
-label-muted = 
-label-muted-foreground = #666
-
-ramp-volume-0 = 
-ramp-volume-1 = 
-ramp-volume-2 = 
-
-click-right = pavucontrol
 
 [module/battery]
 type = internal/battery
