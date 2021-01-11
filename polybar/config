@@ -23,8 +23,7 @@ primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
 
-[bar/bar1]
-;monitor = ${env:MONITOR:HDMI-1}
+[bar/abstract]
 width = 100%
 height = 38
 
@@ -46,17 +45,28 @@ font-3 = Source Sans Pro for Powerline
 font-4 = Unifont
 font-5 = Material Icons
 
-modules-left = i3
-modules-right = bitcoin etherium xbacklight pulseaudio filesystem memory cpu temperature wifi ethernet battery date
-
 tray-position = right
 tray-padding = 3
 tray-offset-y = -2
 
 cursor-click = pointer cursor-scroll = ns-resize [module/xwindow] type = internal/xwindow
 
+[bar/main]
+inherit = bar/abstract
+monitor = eDP-1
+modules-left = i3
+modules-right = xbacklight pulseaudio filesystem memory cpu temperature wifi ethernet battery date
+
+[bar/secondary]
+inherit = bar/abstract
+monitor = HDMI-2
+modules-left = i3
+modules-center = bitcoin etherium 
+modules-right = date
+
 [module/i3]
 type = internal/i3
+pin-workspaces = true
 
 format = <label-state> <label-mode>
 
@@ -68,6 +78,9 @@ label-focused-underline = #fba922
 
 label-unfocused = %index%
 label-unfocused-padding = 3
+
+label-visible = %index%
+label-visible-padding = 3
 
 label-urgent = %index%
 label-urgent-foreground = #ffffff
@@ -115,7 +128,7 @@ label =   %percentage_used%%
 
 [module/bitcoin]
 format = <label>
-label = ₿ %output%€
+label = B: %output%€
 type = custom/script
 exec = $HOME/.config/polybar/currencyrates.py btc eur
 interval=600
@@ -124,7 +137,7 @@ click-right = firefox --new-window "https://freecurrencyrates.com/en/convert-BTC
 
 [module/etherium]
 format = <label>
-label = Ξ %output%€
+label = Ξ: %output%€
 type = custom/script
 exec = $HOME/.config/polybar/currencyrates.py eth eur
 interval=600

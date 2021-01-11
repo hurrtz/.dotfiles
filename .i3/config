@@ -14,8 +14,8 @@ set $urgent-bg-color #e53935
 set $active-window-bg-color #ffd166
 set $active-window-fg-color #000000
 
-set $monitor-primary eDP1
-set $monitor-secondary DP1
+set $monitor-primary eDP-1
+set $monitor-secondary HDMI-2
 
 # window colors
 #                         border                background            text                    indicator
@@ -62,6 +62,10 @@ bindsym $mod+b split h
 
 # split in vertical orientation
 bindsym $mod+v split v
+
+workspace_auto_back_and_forth yes
+bindsym $mod+z workspace back_and_forth
+bindsym $mod+Shift+z move container to to workspace back_and_forth; workspace back_and_forth
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -133,13 +137,22 @@ bindsym $mod+Shift+8 move container to workspace $workspace8
 bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace10
 
+# move container to next/previous monitor
+bindsym $mod+m move container to output right
+bindsym $mod+Shift+m move container to output left
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
-bindsym $mod+Shift+e exec /home/tobi/.i3/exit-menu.sh
+bindsym $mod+Shift+e exec /home/tobi/.config/i3/scripts/rofi-power "i3-msg exit"
+
+# scratchpad
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+# reset current visible content of scratchpad back to previous workspace with $mod+Shift+Space
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -180,7 +193,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+Return exec --no-startup-id alacritty -name "floating_urxvt"
 bindsym $mod+Shift+q kill
 bindsym Print exec escrotum
-bindsym $mod+Shift+p exec i3lock-fancy -p
+bindsym $mod+Shift+p exec ~/.config/i3/scripts/lock -p
 bindsym $mod+space exec "rofi -combi-modi drun,run -show combi -modi combi,'calculator:qalc +u8 -nocurrencies' -sidebar-mode -lines 5"
 
 # startup
@@ -189,4 +202,6 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id feh --bg-scale /home/tobi/Pictures/wallpaper.jpg
 exec --no-startup-id alacritty -name cli
 exec --no-startup-id compton -bc -r 3 -l -4 -t -4 --shadow-exclude '_GTK_FRAME_EXTENTS@:c' -f --config /home/tobi/.config/compton/compton.conf
-
+exec --no-startup setxkbmap -option ctrl:nocaps
+exec --no-startup-id nm-applet
+exec --no-startup-id ibus-daemon
