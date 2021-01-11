@@ -114,7 +114,7 @@ fixed-values = true
 ; Default: 2
 spacing = 4
 
-label-mounted =   %percentage_free%%
+label-mounted =   %percentage_used%%
 
 [module/cpu]
 type = internal/cpu
