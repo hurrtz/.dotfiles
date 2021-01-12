@@ -167,6 +167,13 @@
     mouse_left_click = close_current
     mouse_right_click = do_action
 
+[shortcuts]
+    # close notification
+    close = ctrl+BackSpace
+
+    # close all notifications
+    close_all = ctrl+shift+BackSpace
+
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
