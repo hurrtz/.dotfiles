@@ -1,0 +1,9 @@
+[NotebookList]
+Default=
+1=~/Notebooks/Omio
+
+[Notebook 1]
+uri=~/Notebooks/Omio
+name=Omio
+interwiki=None
+icon=None

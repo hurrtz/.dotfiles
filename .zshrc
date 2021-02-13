@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH="/home/tobi/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="agnoster"
 
@@ -37,5 +37,14 @@ zle -N prepend-sudo
 # defined shortcut keys: [Esc] [Esc]
 bindkey "\e\e" prepend-sudo
 
+export PINENTRY_PROGRAM="pinentry-rofi"
+export GUIX_PROFILE="$HOME/.guix-profile"
+     . "$GUIX_PROFILE/etc/profile"
+export GUIX_LOCPATH=$HOME/.guix-profile/lib/locale
+
 path+=/opt/android-studio/bin
+path+=$HOME/scripts
+path+=$HOME/bin
+path+=$HOME/.config/guix/current/bin/guix
+path+=$HOME/.cargo/bin
 export PATH

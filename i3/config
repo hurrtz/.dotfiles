@@ -1,0 +1,213 @@
+set $mod Mod1
+
+set $up k
+set $down j
+set $left h
+set $right l
+
+set $bg-color #2f343f
+set $inactive-bg-color #2f343f
+set $text-color #f3f4f5
+set $inactive-text-color #cccccc
+set $urgent-bg-color #e53935
+
+set $active-window-bg-color #ffd166
+set $active-window-fg-color #000000
+
+set $monitor-primary eDP-1
+set $monitor-secondary HDMI-2
+
+# window colors
+#                         border                background            text                    indicator
+client.focused            $bg-color             $inactive-bg-color    $active-window-bg-color $urgent-bg-color
+client.unfocused          $inactive-bg-color    $inactive-bg-color    $inactive-text-color    $urgent-bg-color
+client.focused_inactive   $inactive-bg-color    $inactive-bg-color    $inactive-text-color    $urgent-bg-color
+client.urgent             $urgent-bg-color      $urgent-bg-color      $text-color             $urgent-bg-color
+
+default_border pixel 1
+default_floating_border pixel 1
+
+hide_edge_borders both
+
+font pango:Source Code Pro for Powerline 10
+
+floating_modifier $mod
+
+smart_gaps on
+gaps inner 10
+gaps outer 0
+
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+b split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+workspace_auto_back_and_forth yes
+bindsym $mod+z workspace back_and_forth
+bindsym $mod+Shift+z move container to to workspace back_and_forth; workspace back_and_forth
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# cli: 
+# chrome: 
+# code: 
+# git: 
+# debug: 
+# folder: 
+# chat: 
+# notes: 
+# opera: 
+# spotify: 
+set $workspace1 "1"
+set $workspace2 "2"
+set $workspace3 "3"
+set $workspace4 "4"
+set $workspace5 "5"
+set $workspace6 "6"
+set $workspace7 "7"
+set $workspace8 "8"
+set $workspace9 "9"
+set $workspace10 "10"
+
+workspace $workspace1 output $monitor-primary
+workspace $workspace2 output $monitor-primary
+workspace $workspace3 output $monitor-primary
+workspace $workspace4 output $monitor-primary
+workspace $workspace5 output $monitor-primary
+workspace $workspace6 output $monitor-secondary
+workspace $workspace7 output $monitor-secondary
+workspace $workspace8 output $monitor-secondary
+workspace $workspace9 output $monitor-secondary
+workspace $workspace10 output $monitor-secondary
+
+# switch to workspace
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace $workspace3
+bindsym $mod+4 workspace $workspace4
+bindsym $mod+5 workspace $workspace5
+bindsym $mod+6 workspace $workspace6
+bindsym $mod+7 workspace $workspace7
+bindsym $mod+8 workspace $workspace8
+bindsym $mod+9 workspace $workspace9
+bindsym $mod+0 workspace $workspace10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace $workspace4
+bindsym $mod+Shift+5 move container to workspace $workspace5
+bindsym $mod+Shift+6 move container to workspace $workspace6
+bindsym $mod+Shift+7 move container to workspace $workspace7
+bindsym $mod+Shift+8 move container to workspace $workspace8
+bindsym $mod+Shift+9 move container to workspace $workspace9
+bindsym $mod+Shift+0 move container to workspace $workspace10
+
+# move container to next/previous monitor
+bindsym $mod+m move container to output right
+bindsym $mod+Shift+m move workspace to output right
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+bindsym $mod+Shift+e exec /home/tobi/.config/i3/scripts/rofi-power "i3-msg exit"
+bindsym $mod+Shift+Ctrl+p exec rofi -modi 1pass:rofi-1pass -show 1pass
+
+# scratchpad
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+# reset current visible content of scratchpad back to previous workspace with $mod+Shift+Space
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+  bindsym $down resize shrink width 10 px or 10 ppt
+  bindsym $up resize grow height 10 px or 10 ppt
+  bindsym $right resize shrink height 10 px or 10 ppt
+  bindsym $left resize grow width 10 px or 10 ppt
+
+  # same bindings, but for the arrow keys
+  bindsym Left resize shrink width 10 px or 10 ppt
+  bindsym Down resize grow height 10 px or 10 ppt
+  bindsym Up resize shrink height 10 px or 10 ppt
+  bindsym Right resize grow width 10 px or 10 ppt
+
+  # back to normal: Enter or Escape or $mod+r
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+#sticky window
+bindsym $mod+Shift+s sticky toggle
+
+#key bindings
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse set Master '5%+'
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse set Master '5%-'
+bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5
+bindsym $mod+Shift+b exec firefox # browser
+bindsym $mod+Return exec alacritty
+bindsym $mod+Shift+Return exec --no-startup-id alacritty -name "floating_urxvt"
+bindsym $mod+Shift+q kill
+bindsym Print exec escrotum
+bindsym $mod+Shift+p exec ~/.config/i3/scripts/lock -p
+bindsym $mod+space exec "rofi -combi-modi drun,run -show combi -modi combi,'calculator:qalc +u8 -nocurrencies' -sidebar-mode -lines 5"
+
+# startup
+exec_always --no-startup-id dunst -config /home/tobi/.config/dunst/dunst
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec_always --no-startup-id feh --bg-scale /home/tobi/Pictures/wallpaper.jpg
+exec --no-startup-id alacritty -name cli
+exec --no-startup-id compton -bc -r 3 -l -4 -t -4 --shadow-exclude '_GTK_FRAME_EXTENTS@:c' -f --config /home/tobi/.config/compton/compton.conf
+exec --no-startup setxkbmap -option ctrl:nocaps
+exec --no-startup-id nm-applet
+exec --no-startup-id ibus-daemon
+
+#bar {
+#	position top
+#	status_command i3blocks
+#}

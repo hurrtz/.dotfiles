@@ -61,7 +61,7 @@ modules-right = pulseaudio-control xbacklight filesystem memory cpu temperature 
 inherit = bar/abstract
 monitor = HDMI-2
 modules-left = i3
-modules-center = bitcoin etherium 
+modules-center = bitcoin etherium dogecoin
 modules-right = date
 
 [module/i3]
@@ -140,12 +140,19 @@ label =   %percentage_used%%
 
 [module/bitcoin]
 format = <label>
-label = B: %output%€
+label = ฿: %output%€
 type = custom/script
 exec = $HOME/.config/polybar/currencyrates.py btc eur
 interval=600
 click-left = firefox --new-window "https://freecurrencyrates.com/en/exchange-rate-history/BTC-EUR/2021"
-click-right = firefox --new-window "https://freecurrencyrates.com/en/convert-BTC-EUR"
+
+[module/dogecoin]
+format = <label>
+label = Ɖ: %output%€
+type = custom/script
+exec = $HOME/.config/polybar/currencyrates.py doge eur 9
+interval=600
+click-left = firefox --new-window "https://freecurrencyrates.com/en/exchange-rate-history/DOGE-EUR/2021"
 
 [module/etherium]
 format = <label>
@@ -153,8 +160,7 @@ label = Ξ: %output%€
 type = custom/script
 exec = $HOME/.config/polybar/currencyrates.py eth eur
 interval=600
-click-left = firefox --new-window "https://freecurrencyrates.com/en/exchange-rate-history/ETH-EUR/2019"
-click-right = firefox --new-window "https://freecurrencyrates.com/en/convert-ETH-EUR"
+click-left = firefox --new-window "https://freecurrencyrates.com/en/exchange-rate-history/ETH-EUR/2021"
 
 [module/wifi]
 type = internal/network
